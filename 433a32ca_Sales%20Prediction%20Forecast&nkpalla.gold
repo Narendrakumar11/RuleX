@@ -1,0 +1,42 @@
+//Rbt Rulex 04:04:01.000000 Rulebot: 433a32ca_Sales%20Prediction%20Forecast&nkpalla Repository: git-rulex-test
+//Rulebot definition
+rb = Rulebot(name = "433a32ca_Sales%20Prediction%20Forecast&nkpalla")
+//Task Creation
+rb.createTask(name = "Train", category = "sourcetextfile", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1513.75\nsVx\nF172.5\nsVz\nF11\nss.", status = "2", priority = "0")
+rb.createTask(name = "app1", category = "applymodel", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1490\nsVx\nF763.75\nsVz\nF9\nss.", status = "2", priority = "0")
+rb.createTask(name = "execprc1_cpy", category = "executeprc", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1688.75\nsVx\nF426.25\nsVz\nF4\nss.", status = "2", priority = "0")
+rb.createTask(name = "feature1", category = "sourcetextfile", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1806.25\nsVx\nF186.25\nsVz\nF5\nss.", status = "2", priority = "0")
+rb.createTask(name = "fromtask1", category = "sourcetask", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1851.25\nsVx\nF458.75\nsVz\nF6\nss.", status = "2", priority = "0")
+rb.createTask(name = "ruleman1", category = "rulemanager", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1721.25\nsVx\nF771.25\nsVz\nF8\nss.", status = "2", priority = "0")
+rb.createTask(name = "sfl1", category = "selectflows", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1725\nsVx\nF640\nsVz\nF7\nss.", status = "2", priority = "0")
+rb.createTask(name = "store1", category = "sourcetextfile", position = "(dp1\nVcoord\np2\n(dp3\nVy\nF1683.75\nsVx\nF172.5\nsVz\nF10\nss.", status = "2", priority = "0")
+//Task Load Options
+rb.changeOption(name = "Train", option = "delim", value = "\",\"")
+rb.changeOption(name = "Train", option = "filename", value = "\"C:/Users/Narendra.Palla/OneDrive - EY/Desktop/Projects/RuleX/Training/test.csv\"")
+rb.changeOption(name = "Train", option = "useolddata", value = "True")
+rb.changeOption(name = "execprc1_cpy", option = "endpoint", value = "\"join2\"")
+rb.changeOption(name = "execprc1_cpy", option = "filename", value = "\"C:/Users/Narendra.Palla/OneDrive - EY/Desktop/Projects/RuleX/Training/MODULE_Working_20201012_124635.prcx\"")
+rb.changeOption(name = "execprc1_cpy", option = "mapping", value = "{\"dataman7\":[\"store1\"], \"dataman8\":[\"feature1\"], \"dataman3\":[\"Train\"]}")
+rb.changeOption(name = "execprc1_cpy", option = "uri", value = "\"local\"")
+rb.changeOption(name = "feature1", option = "delim", value = "\",\"")
+rb.changeOption(name = "feature1", option = "filename", value = "\"C:/Users/Narendra.Palla/OneDrive - EY/Desktop/Projects/RuleX/Training/features.csv\"")
+rb.changeOption(name = "fromtask1", option = "process", value = "\"Working\"")
+rb.changeOption(name = "fromtask1", option = "reflist", value = "[\"rules\"]")
+rb.changeOption(name = "fromtask1", option = "task", value = "\"llm1\"")
+rb.changeOption(name = "sfl1", option = "datatask", value = "\"execprc1_cpy\"")
+rb.changeOption(name = "sfl1", option = "ruletask", value = "\"fromtask1\"")
+rb.changeOption(name = "store1", option = "delim", value = "\",\"")
+rb.changeOption(name = "store1", option = "filename", value = "\"C:/Users/Narendra.Palla/OneDrive - EY/Desktop/Projects/RuleX/Training/stores.csv\"")
+//Task Links
+rb.createLink(parent = "sfl1", child = "app1")
+rb.createLink(parent = "store1", child = "execprc1_cpy")
+rb.createLink(parent = "feature1", child = "execprc1_cpy")
+rb.createLink(parent = "Train", child = "execprc1_cpy")
+rb.createLink(parent = "sfl1", child = "ruleman1")
+rb.createLink(parent = "fromtask1", child = "sfl1")
+rb.createLink(parent = "execprc1_cpy", child = "sfl1")
+//Set History Code
+//Set Alerts
+//Set Macros
+//Set Graphics
+//Set Process Variables
